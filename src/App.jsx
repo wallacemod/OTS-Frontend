@@ -8,7 +8,6 @@ function App() {
   const [itens, setItens] = useState([])
 
   async function carregarDadosApi() {
-    console.log("carregarDadosApi")
 
     const response = await fetch("https://rickandmortyapi.com/api/character/")
 
@@ -16,7 +15,6 @@ function App() {
 
     const results = json.results
 
-    console.log(results)
     setItens(results)
   }
 
