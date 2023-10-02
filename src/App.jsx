@@ -1,26 +1,28 @@
+import { useState } from 'react'
 import './App.css'
 import Card from './components/Card/Card'
+import { useEffect } from 'react'
 
 function App() {
-  const item1 = {
-    nome: 'Rick Sanchez',
-    imagemUrl: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
-    tags: ['Status: Vivo', 'Espécie: Humana', 'Origem: Terra C-137']
+
+  const [itens, setItens] = useState([])
+
+  async function carregarDadosApi() {
+    console.log("carregarDadosApi")
+
+    const response = await fetch("https://rickandmortyapi.com/api/character/")
+
+    const json = await response.json()
+
+    const results = json.results
+
+    console.log(results)
+    setItens(results)
   }
 
-  const item2 = {
-    nome: 'Morty Smith',
-    imagemUrl: 'https://rickandmortyapi.com/api/character/avatar/2.jpeg',
-    tags: ['Status: Vivo']
-  }
-
-  const item3 = {
-    nome: 'Summer Smith',
-    imagemUrl: 'https://rickandmortyapi.com/api/character/avatar/3.jpeg',
-    tags: ['Status: Vivo']
-  }
-
-  const itens = [item1, item2, item3]
+  useEffect(function () {
+    carregarDadosApi()
+  }, [])
 
   return (
     <>
