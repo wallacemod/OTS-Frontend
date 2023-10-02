@@ -4,13 +4,11 @@ import "./Card.css"
 export default function Card(props) {
     const item = props.item;
 
-    // let tags = item.tags;
-
-    // if (!tags) {
-    //   tags = [];
-    // } ou para checar se é undefinied:
-
-    const tags = item.tags || [];
+    const tags = [
+      "Status: " + item.status,
+      "Species: " + item.species,
+      "Origin: " + item.origin.name,
+    ];
 
     return <div className="card">
       <h2>{item.name}</h2>
